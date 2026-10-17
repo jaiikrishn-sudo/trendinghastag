@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trending Hashtag – Copy Trending Hashtags for Instagram, Facebook & YouTube</title>
+<meta name="description" content="Pick a platform, pick a category, copy the hashtags. Free trending hashtags for Instagram, Facebook and YouTube.">
+<meta name="theme-color" content="#1877F2">
+<link rel="canonical" href="https://YOUR-DOMAIN.com/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Trending Hashtag">
+<meta property="og:title" content="Trending Hashtag – Copy Hashtags for Instagram, Facebook & YouTube">
+<meta property="og:description" content="Pick a platform, pick a category, copy the hashtags. Free and no sign-up.">
+<meta property="og:url" content="https://YOUR-DOMAIN.com/">
+<meta property="og:image" content="https://YOUR-DOMAIN.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Trending Hashtag">
+<meta name="twitter:description" content="Free hashtags for Instagram, Facebook and YouTube. Copy in one tap.">
+<meta name="twitter:image" content="https://YOUR-DOMAIN.com/og-image.png">
+<style>
+:root{
+  --bg:#F5F3FF; --surface:#FFFFFF; --ink:#1B1A34; --muted:#66658A; --line:#E0DDF7;
+  --pf:#D6249F; --ig:#D6249F; --fb:#1877F2; --yt:#E8132B;
+  --shadow:0 14px 34px -14px rgba(40,30,110,.28);
+  --font:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#13122A; --surface:#1E1D3E; --ink:#EEEDFF; --muted:#A3A2CB; --line:#34325F; --shadow:0 14px 34px -14px rgba(0,0,0,.65);}
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+ul{list-style:none}
+:focus-visible{outline:3px solid var(--pf);outline-offset:2px;border-radius:8px}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+.top{padding:14px 0 0;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
+.logo{width:40px;height:40px;border-radius:50%;display:block}
+
+.hero{padding:20px 0 4px}
+.hero h1{font-size:clamp(1.5rem,4.6vw,2.1rem);line-height:1.15;font-weight:700;letter-spacing:-.03em}
+.hero p{color:var(--muted);font-size:.95rem;margin-top:8px;max-width:48ch}
+
+.step{margin-top:22px}
+.step h2{display:flex;align-items:center;gap:10px;font-size:1.02rem;font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+.step h2 span{width:26px;height:26px;border-radius:8px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:.8rem;flex:none}
+
+/* step 1: platforms */
+.plats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.plat{background:var(--surface);border:2px solid var(--line);border-radius:16px;padding:10px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:600;font-size:.88rem;transition:border-color .2s,transform .15s,box-shadow .2s}
+.plat:hover{border-color:var(--c)}
+.plat:active{transform:scale(.98)}
+.plat[aria-pressed="true"]{border-color:var(--c);box-shadow:0 10px 24px -12px var(--c)}
+.pic{width:40px;height:40px;border-radius:12px;background:var(--c);color:#fff;display:grid;place-items:center;transition:transform .2s}
+.plat[aria-pressed="true"] .pic{transform:scale(1.08)}
+.pic svg{width:24px;height:24px}
+
+/* step 2: sliding categories */
+.cats{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 2px 12px;margin:0 -20px;padding-inline:20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.cats::-webkit-scrollbar{display:none}
+.cat{flex:none;scroll-snap-align:start;padding:7px 15px;border-radius:999px;background:var(--surface);border:1.5px solid var(--line);font-weight:600;font-size:.86rem;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,transform .15s}
+.cat:hover{border-color:var(--pf)}
+.cat:active{transform:scale(.97)}
+.cat[aria-pressed="true"]{background:var(--pf);border-color:var(--pf);color:#fff}
+.slidehint{color:var(--muted);font-size:.78rem;margin-top:0}
+
+/* step 3: groups */
+.sub{color:var(--muted);font-size:.88rem;margin-bottom:10px}
+.sub b{color:var(--pf)}
+.groups{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.group{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
+.group header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.group h3{font-size:.95rem;font-weight:700;letter-spacing:-.01em}
+.selall{flex:none;font-size:.74rem;font-weight:600;padding:5px 10px;border-radius:10px;border:1.5px solid var(--line);transition:border-color .2s,color .2s}
+.selall:hover{border-color:var(--pf);color:var(--pf)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:5px 10px;border-radius:999px;background:var(--bg);border:1.5px solid var(--line);font-weight:500;font-size:.82rem;color:var(--muted);transition:background .15s,color .15s,border-color .15s,transform .15s}
+.chip:hover{border-color:var(--pf)}
+.chip:active{transform:scale(.96)}
+.chip[aria-pressed="true"]{background:var(--pf);border-color:var(--pf);color:#fff}
+
+/* copy bar */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:12px;pointer-events:none;transform:translateY(130%);transition:transform .3s}
+.bar.on{transform:none}
+.bin{pointer-events:auto;max-width:900px;margin:0 auto;background:var(--ink);color:var(--bg);border-radius:18px;padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 12px 34px rgba(0,0,0,.35)}
+.count{flex:none;font-weight:800;font-size:1.1rem;min-width:56px;letter-spacing:-.02em;line-height:1.1}
+.count small{display:block;font-size:.7rem;font-weight:600;opacity:.7;letter-spacing:0}
+.count.over{color:#FF8A8A}
+.preview{flex:1;min-width:0;font-size:.9rem;opacity:.85;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.clr{flex:none;font-weight:600;font-size:.85rem;opacity:.75;padding:8px}
+.go{flex:none;background:var(--pf);color:#fff;font-weight:700;font-size:.9rem;padding:10px 16px;border-radius:12px;transition:background .3s}
+.toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);background:var(--pf);color:#fff;font-weight:700;padding:12px 20px;border-radius:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:70;max-width:92vw;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+footer{margin-top:60px;border-top:1px solid var(--line);padding:30px 0 120px;color:var(--muted);font-size:.85rem}
+.flinks{display:flex;flex-wrap:wrap;gap:6px 22px;margin-bottom:16px}
+.flinks button{font-weight:600;font-size:.9rem;color:var(--ink)}
+.flinks button:hover{color:var(--pf)}
+footer p{max-width:70ch}
+
+/* legal dialog */
+dialog{border:0;border-radius:22px;background:var(--surface);color:var(--ink);width:min(720px,94vw);max-height:88vh;padding:0;margin:auto;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(10,8,30,.6);backdrop-filter:blur(3px)}
+.dh{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--line);padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:12px;z-index:2}
+.dh h3{font-size:1.2rem}
+.dx{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);font-size:1.2rem;line-height:1}
+.dnav{display:flex;flex-wrap:wrap;gap:8px;padding:14px 22px 0}
+.dnav button{padding:7px 13px;border-radius:999px;border:1px solid var(--line);font-size:.85rem;font-weight:600}
+.dnav button[aria-pressed="true"]{background:var(--pf);color:#fff;border-color:var(--pf)}
+.dbody{padding:10px 22px 28px;overflow:auto;max-height:calc(88vh - 140px)}
+.dbody h4{margin:22px 0 6px;font-size:1.02rem}
+.dbody p,.dbody li{color:var(--muted);font-size:.94rem;margin-bottom:8px}
+.dbody ul{padding-left:20px;list-style:disc}
+.dbody .upd{font-size:.82rem;margin-top:14px}
+.dbody a{color:var(--pf);font-weight:600}
+
+.mylists{font-weight:600;font-size:.82rem;padding:7px 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);transition:border-color .2s}
+.mylists:hover{border-color:var(--pf)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.search{margin-top:10px}
+.search input{width:100%;font:inherit;font-size:.92rem;padding:11px 16px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.search input::placeholder{color:var(--muted)}
+.quick{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:12px;font-size:.82rem;color:var(--muted)}
+.quick button{padding:4px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-weight:600;font-size:.8rem}
+.quick button:hover{border-color:var(--pf);color:var(--pf)}
+.sv{flex:none;font-weight:600;font-size:.85rem;opacity:.85;padding:8px}
+.empty{color:var(--muted);font-size:.9rem;padding:20px 0}
+.srow{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.srow b{font-size:.92rem}
+.srow p{font-size:.82rem;margin:4px 0 8px;word-break:break-word}
+.srow button{font-size:.8rem;font-weight:600;padding:5px 12px;border-radius:10px;border:1.5px solid var(--line);margin-right:6px}
+@media (max-width:700px){
+  .groups{grid-template-columns:1fr}
+  .plat{padding:9px 4px;font-size:.82rem}
+  .pic{width:38px;height:38px}
+  .sv{padding:8px 4px}
+  .preview{display:none}
+  .bin{justify-content:space-between}
+  .group{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top"><div class="brand"><img class="logo" src="logo.png" alt="" width="40" height="40">Trending Hashtag</div></div>
+
+  <div class="hero">
+    <h1 class="sr-only">Copy trending hashtags in 3 easy steps.</h1>
+    <div class="search"><input id="q" type="search" placeholder="Search hashtags, e.g. gym, ipl, diwali" aria-label="Search hashtags" autocomplete="off"></div>
+  </div>
+
+  <section class="step">
+    <h2><span>1</span>Choose your platform</h2>
+    <div class="plats" id="plats"></div>
+  </section>
+
+  <section class="step">
+    <h2><span>2</span>Choose your category</h2>
+    <div class="cats" id="cats"></div>
+    <p class="slidehint">Slide sideways to see all categories.</p>
+  </section>
+
+  <section class="step" id="step3">
+    <h2><span>3</span>Tap hashtags and copy</h2>
+    <p class="sub" id="sub"></p>
+    <div class="quick" id="quick"><span>Quick pick:</span><button data-quick="5">5</button><button data-quick="10">10</button><button data-quick="15">15</button></div>
+    <div class="groups" id="groups"></div>
+  </section>
+
+  <footer>
+    <div class="flinks">
+      <button data-legal="privacy">Privacy Policy</button>
+      <button data-legal="terms">Terms of Use</button>
+      <button data-legal="disclaimer">Disclaimer</button>
+      <button data-legal="about">About</button>
+      <button data-legal="contact">Contact</button>
+    </div>
+    <p>&copy; 2026 Trending Hashtag. Trending Hashtag is an independent website and is not affiliated with, endorsed by or sponsored by Instagram, Facebook, Meta, YouTube or Google. All names and logos belong to their respective owners.</p>
+  </footer>
+</div>
+
+<div class="bar" id="bar">
+  <div class="bin">
+    <div class="count" id="count">0<small id="limit">of 30</small></div>
+    <div class="preview" id="preview"></div>
+    <button class="clr" id="clear">Clear</button>
+    <button class="go" id="copy">Copy hashtags</button>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<dialog id="legal" aria-labelledby="legalTitle">
+  <div class="dh"><h3 id="legalTitle"></h3><button class="dx" id="legalClose" aria-label="Close">&times;</button></div>
+  <div class="dnav" id="legalNav"></div>
+  <div class="dbody" id="legalBody"></div>
+</dialog>
+
+<script src="hashtags.js"></script>
+<script>
+/* ============ SETTINGS (edit these) ============ */
+const SITE={
+  name:"Trending Hashtag",
+  email:"trendinghastag@gmail.com",
+  updated:"October 17, 2026"
+};
+
+const P={
+ ig:{name:"Instagram",color:"#D6249F",limit:30,tip:"Instagram allows up to <b>30</b> hashtags. Around 15 works best."},
+ fb:{name:"Facebook",color:"#1877F2",limit:5,tip:"Facebook works best with just <b>1 to 5</b> hashtags."},
+ yt:{name:"YouTube",color:"#E8132B",limit:15,tip:"YouTube ignores all hashtags if you use more than <b>15</b>."}
+};
+
+const ICON={
+ ig:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></svg>',
+ fb:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 21v-7.6h2.6l.5-3h-3.1V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.8v3h2.6V21z" fill="currentColor"/></svg>',
+ yt:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4.6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 9l5.6 3L10 15z" fill="currentColor"/></svg>'
+};
+
+/* ============ LEGAL TEXT ============ */
+const LEGAL={
+privacy:{title:"Privacy Policy",html:()=>`
+<p class="upd">Last updated: ${SITE.updated}</p>
+<p>We built ${SITE.name} so that it does not collect personal data. This policy explains that in simple words and follows the Digital Personal Data Protection Act, 2023 (India).</p>
+<h4>1. What we collect</h4>
+<p><b>Nothing.</b> There is no account, no sign-up, no form and no comment box. We do not ask for or store your name, phone number, email, location or any other personal data. The hashtags you tap stay only in your browser's memory and disappear when you close or refresh the page.</p>
+<h4>2. What we do not use</h4>
+<ul>
+<li>No cookies and no local storage.</li>
+<li>No analytics or tracking tools.</li>
+<li>No advertising or ad networks.</li>
+<li>No third-party fonts, scripts or widgets. The whole site loads from our own hosting.</li>
+<li>We never read your clipboard. The copy button only writes the hashtags you chose.</li>
+</ul>
+<h4>3. Hosting provider</h4>
+<p>The website is hosted on Cloudflare. Like every web host, Cloudflare may automatically process technical data such as your IP address and browser type to deliver the site and protect it from attacks. We do not receive or use this data to identify you. Cloudflare handles it under its own privacy policy.</p>
+<h4>4. If you email us</h4>
+<p>If you choose to write to ${SITE.email}, we receive your email address and message. We use them only to reply to you and delete them when they are no longer needed. We do not share them. Our mailbox is a Gmail account, so Google also processes emails sent to it under its own privacy policy.</p>
+<h4>5. Children</h4>
+<p>We do not collect personal data from anyone, including children under 18 years of age. We do not track or profile anyone or show targeted ads.</p>
+<h4>6. Your rights</h4>
+<p>Under the DPDP Act, 2023 you may ask us what personal data we hold about you, ask us to correct or erase it, and make a complaint. Since the website itself collects none, this applies only to any email you sent us. You can also nominate another person to exercise these rights for you.</p>
+<h4>7. Grievance contact</h4>
+<p>For any privacy question or complaint, email <a href="mailto:${SITE.email}">${SITE.email}</a> (${SITE.name}). We will reply within a reasonable time. If you are not satisfied, you may approach the Data Protection Board of India.</p>
+<h4>8. Third-party links</h4>
+<p>This website does not link to other sites except where the footer names a platform. Instagram, Facebook and YouTube have their own privacy practices that we do not control.</p>
+<h4>9. Changes to this policy</h4>
+<p>If we ever add analytics, ads or anything that collects data, we will update this page first, state exactly what is collected and why, and ask for your consent where the law requires it. The date at the top shows when this policy last changed.</p>`},
+
+terms:{title:"Terms of Use",html:()=>`
+<p class="upd">Last updated: ${SITE.updated}</p>
+<p>By using ${SITE.name} you agree to these Terms of Use. If you do not agree, please do not use the website.</p>
+<h4>1. What we offer</h4>
+<p>${SITE.name} provides free lists of suggested hashtags for social media posts. The service is provided for general information and convenience.</p>
+<h4>2. Acceptable use</h4>
+<ul>
+<li>Use the website only for lawful purposes.</li>
+<li>Do not attempt to hack, overload or disrupt the site or its servers.</li>
+<li>Do not use automated tools to copy the whole site, or its data, at scale.</li>
+<li>Do not use the hashtags to post spam, hate, misleading or illegal content.</li>
+</ul>
+<h4>3. Intellectual property</h4>
+<p>Hashtags are common words and phrases and are not owned by us. The design, layout, code, text and branding of ${SITE.name} belong to the owners of ${SITE.name}. You may not copy or resell them without written permission.</p>
+<h4>4. Third-party platforms</h4>
+<p>When you post on Instagram, Facebook, YouTube or any other platform, you must follow that platform's own rules and terms. We are not responsible for how those platforms treat your account or content.</p>
+<h4>5. No guarantees</h4>
+<p>The website is provided "as is" and "as available". We do not promise that it will always be available, error-free, or that using any hashtag will increase your views, followers or income.</p>
+<h4>6. Limitation of liability</h4>
+<p>To the fullest extent allowed by law, The owners and developers of ${SITE.name} are not liable for any loss or damage arising from your use of, or inability to use, the website, including loss of reach, account restrictions or business loss.</p>
+<h4>7. Changes and termination</h4>
+<p>We may change, suspend or stop any part of the website, and update these terms, at any time. Continued use after changes means you accept them.</p>
+<h4>8. Governing law</h4>
+<p>These terms are governed by the laws of India. Any dispute will be subject to the competent courts in India.</p>
+<h4>9. Contact</h4>
+<p>Email <a href="mailto:${SITE.email}">${SITE.email}</a> for any questions about these terms.</p>`},
+
+disclaimer:{title:"Disclaimer",html:()=>`
+<p class="upd">Last updated: ${SITE.updated}</p>
+<h4>Not affiliated</h4>
+<p>${SITE.name} is an independent website. It is not affiliated with, endorsed by or sponsored by Instagram, Facebook, Meta Platforms, Inc., YouTube or Google LLC. All names, logos and trademarks are the property of their respective owners and are used here only to identify the platforms the hashtags are meant for.</p>
+<h4>No guarantee of results</h4>
+<p>Hashtag suggestions are provided for information only. We do not guarantee any increase in reach, views, likes, followers or sales from using them.</p>
+<h4>How hashtags are chosen</h4>
+<p>The hashtags on ${SITE.name} are selected and updated manually by our team. No hashtag is sponsored or paid for, and we do not accept payment to list or promote any hashtag, brand or account.</p>
+<h4>Trends change</h4>
+<p>Hashtag popularity changes quickly. The lists on this website are curated starting points and may not reflect what is trending at this exact moment. Always check the platform's search before you post.</p>
+<h4>Restricted hashtags</h4>
+<p>Platforms may restrict or hide certain hashtags without notice. Please check each hashtag and follow the community guidelines of the platform you are using.</p>
+<h4>External links</h4>
+<p>Links to other websites are provided for convenience. We have no control over their content and accept no responsibility for it.</p>`},
+
+about:{title:"About",html:()=>`
+<p>${SITE.name} is a free tool that helps creators, small businesses and social media managers find the right hashtags faster.</p>
+<p>Choose a platform, choose a category, and copy the hashtags in one tap. Every list is made separately for Instagram, Facebook and YouTube because each platform works differently.</p>
+<p>All hashtags are picked and updated manually by our team. Nothing here is sponsored.</p>`},
+
+contact:{title:"Contact",html:()=>`
+<p>Have a question, a suggestion for a new category, or found a problem? We would love to hear from you.</p>
+<h4>Email</h4>
+<p><a href="mailto:${SITE.email}">${SITE.email}</a></p>
+<h4>Business</h4>
+<p>${SITE.name}</p>
+<p>We usually reply within a few working days.</p>`}
+};
+
+/* ============ STATE ============ */
+let plat="ig", cat=CATS[0].id;
+const sel=new Set();
+let q="", view=[];
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
+const uniq=a=>[...new Set(a)];
+const catObj=()=>CATS.find(c=>c.id===cat);
+const groupTags=g=>uniq([...g[plat],...g.all]);
+
+/* ============ RENDER ============ */
+function renderPlats(){
+  $("#plats").innerHTML=Object.entries(P).map(([k,p])=>
+   `<button class="plat" style="--c:${p.color}" data-plat="${k}" aria-pressed="${k===plat}"><span class="pic">${ICON[k]}</span>${p.name}</button>`).join("");
+}
+function renderCats(){
+  $("#cats").innerHTML=CATS.map(c=>
+   `<button class="cat" data-cat="${c.id}" aria-pressed="${c.id===cat}">${c.name}</button>`).join("");
+}
+function buildView(){
+  if(!q){return catObj().groups.map(g=>({t:g.t,tags:groupTags(g)}));}
+  const out=[];
+  CATS.forEach(c=>c.groups.forEach(g=>{
+    const all=groupTags(g), titleHit=(c.name+" "+g.t).toLowerCase().includes(q);
+    const hit=titleHit?all:all.filter(t=>t.includes(q));
+    if(hit.length)out.push({t:`${c.name.replace(/^\S*\u{1F525}\s*/u,"")} \u00b7 ${g.t}`,tags:hit});
+  }));
+  return out.slice(0,16);
+}
+function renderGroups(){
+  const c=catObj(), p=P[plat];
+  view=buildView();
+  $("#sub").innerHTML=q?`Results for <b>${q.replace(/[<>&"]/g,"")}</b> on <b>${p.name}</b>. ${p.tip}`:`${c.name} hashtags for <b>${p.name}</b>. Tap the ones you want, then press Copy. ${p.tip}`;
+  $("#groups").innerHTML=view.length?view.map((g,i)=>`
+    <div class="group">
+      <header><h3>${g.t}</h3><button class="selall" data-group="${i}" aria-label="Select all in ${g.t}">Select all</button></header>
+      <div class="chips">${g.tags.map(t=>`<button class="chip" data-tag="${t}" aria-pressed="${sel.has(t)}">#${t}</button>`).join("")}</div>
+    </div>`).join(""):`<p class="empty">No hashtags found. Try another word.</p>`;
+  syncGroups();
+}
+function syncGroups(){
+  $$(".selall").forEach(b=>{
+    const tags=view[+b.dataset.group].tags;
+    b.textContent=tags.every(t=>sel.has(t))?"Unselect all":"Select all";
+  });
+}
+function updateBar(){
+  const n=sel.size;
+  $("#count").firstChild.nodeValue=n;
+  $("#count").classList.toggle("over",n>P[plat].limit);
+  $("#limit").textContent="of "+P[plat].limit;
+  $("#preview").textContent=[...sel].map(t=>"#"+t).join(" ");
+  $("#bar").classList.toggle("on",n>0);
+}
+function applyColor(){document.documentElement.style.setProperty("--pf",P[plat].color);}
+function renderAll(){applyColor();renderPlats();renderCats();renderGroups();updateBar();}
+function quickPick(n){
+  const lim=Math.min(n,P[plat].limit), lists=view.map(g=>g.tags), out=[];
+  for(let i=0;out.length<lim&&i<30;i++){
+    for(const l of lists){if(l[i]&&!out.includes(l[i])&&out.length<lim)out.push(l[i]);}
+  }
+  sel.clear();out.forEach(t=>sel.add(t));
+  $$(".chip").forEach(x=>x.setAttribute("aria-pressed",sel.has(x.dataset.tag)));
+  syncGroups();updateBar();
+}
+
+/* ============ COPY ============ */
+function toast(m){
+  const t=$("#toast");t.textContent=m;t.classList.add("show");
+  clearTimeout(toast.id);toast.id=setTimeout(()=>t.classList.remove("show"),2200);
+}
+async function copyText(text,msg){
+  try{await navigator.clipboard.writeText(text);}
+  catch(e){
+    const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);
+    ta.select();document.execCommand("copy");ta.remove();
+  }
+  toast(msg);
+}
+
+/* ============ LEGAL DIALOG ============ */
+const dlg=$("#legal");
+function openLegal(key){
+  const L=LEGAL[key];if(!L)return;
+  $("#legalTitle").textContent=L.title;
+  $("#legalBody").innerHTML=L.html();
+  $("#legalBody").scrollTop=0;
+  $("#legalNav").innerHTML=Object.entries(LEGAL).map(([k,v])=>
+    `<button data-legal="${k}" aria-pressed="${k===key}">${v.title}</button>`).join("");
+  if(!dlg.open)dlg.showModal();
+  history.replaceState(null,"","#"+key);
+}
+function closeLegal(){dlg.close();history.replaceState(null,"",location.pathname+location.search);}
+$("#legalClose").addEventListener("click",closeLegal);
+$("#q").addEventListener("input",e=>{q=e.target.value.trim().toLowerCase().replace(/^#/,"");renderGroups();});
+dlg.addEventListener("click",e=>{if(e.target===dlg)closeLegal();});
+dlg.addEventListener("cancel",()=>history.replaceState(null,"",location.pathname+location.search));
+
+/* ============ EVENTS ============ */
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.dataset.legal){openLegal(b.dataset.legal);return;}
+  if(b.dataset.quick){quickPick(+b.dataset.quick);return;}
+  if(b.dataset.plat){
+    if(plat!==b.dataset.plat){plat=b.dataset.plat;sel.clear();}
+    renderAll();return;
+  }
+  if(b.dataset.cat){
+    cat=b.dataset.cat;renderAll();
+    $("#cats").querySelector('[aria-pressed="true"]').scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"});
+    $("#step3").scrollIntoView({behavior:"smooth"});return;
+  }
+  if(b.dataset.tag){
+    const t=b.dataset.tag;
+    sel.has(t)?sel.delete(t):sel.add(t);
+    b.setAttribute("aria-pressed",sel.has(t));
+    syncGroups();updateBar();return;
+  }
+  if(b.dataset.group){
+    const tags=view[+b.dataset.group].tags;
+    const all=tags.every(t=>sel.has(t));
+    tags.forEach(t=>all?sel.delete(t):sel.add(t));
+    $$(".chip").forEach(x=>x.setAttribute("aria-pressed",sel.has(x.dataset.tag)));
+    syncGroups();updateBar();return;
+  }
+  if(b.id==="copy"){
+    const over=sel.size>P[plat].limit;
+    copyText([...sel].map(t=>"#"+t).join(" "),
+      over?`Copied, but ${P[plat].name} allows only ${P[plat].limit}`:`${sel.size} hashtags copied. Now paste them in your post.`);return;
+  }
+  if(b.id==="clear"){
+    sel.clear();$$(".chip").forEach(x=>x.setAttribute("aria-pressed","false"));syncGroups();updateBar();return;
+  }
+});
+
+/* ============ INIT ============ */
+renderAll();
+const h=location.hash.replace("#","");
+if(LEGAL[h])openLegal(h);
+</script>
+</body>
+</html>
+
