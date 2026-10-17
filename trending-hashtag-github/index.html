@@ -208,6 +208,7 @@ dialog::backdrop{background:rgba(10,8,30,.6);backdrop-filter:blur(3px)}
 const SITE={
   name:"Trending Hashtag",
   email:"supporttrendinghastag@gmail.com",
+  api:"https://trending-hashtag-panel.jaiikrishn.workers.dev/api/hashtags",   // optional: paste your Worker address here, e.g. https://NAME.workers.dev/api/hashtags (leave empty to use hashtags.js only)
   updated:"October 17, 2026"
 };
 
@@ -239,7 +240,7 @@ privacy:{title:"Privacy Policy",html:()=>`
 <li>We never read your clipboard. The copy button only writes the hashtags you chose.</li>
 </ul>
 <h4>3. Hosting provider</h4>
-<p>The website is hosted on Cloudflare. Like every web host, Cloudflare may automatically process technical data such as your IP address and browser type to deliver the site and protect it from attacks. We do not receive or use this data to identify you. Cloudflare handles it under its own privacy policy.</p>
+<p>The website, and the small service that delivers our hashtag lists, are hosted on Cloudflare. Like every web host, Cloudflare may automatically process technical data such as your IP address and browser type to deliver the site and protect it from attacks. We do not receive or use this data to identify you. Cloudflare handles it under its own privacy policy.</p>
 <h4>4. If you email us</h4>
 <p>If you choose to write to ${SITE.email}, we receive your email address and message. We use them only to reply to you and delete them when they are no longer needed. We do not share them. Our mailbox is a Gmail account, so Google also processes emails sent to it under its own privacy policy.</p>
 <h4>5. Children</h4>
@@ -446,6 +447,21 @@ document.addEventListener("click",e=>{
 
 /* ============ INIT ============ */
 renderAll();
+/* Optional: load the hashtag lists saved from the admin panel (Worker). Falls back to hashtags.js on any problem. */
+async function loadRemote(){
+  if(!SITE.api)return;
+  try{
+    const r=await fetch(SITE.api);
+    if(!r.ok)return;
+    const d=await r.json();
+    const ok=Array.isArray(d)&&d.length&&d.every(c=>c&&typeof c.id==="string"&&typeof c.name==="string"&&Array.isArray(c.groups)&&c.groups.every(g=>g&&typeof g.t==="string"&&["all","ig","fb","yt"].every(k=>Array.isArray(g[k]))));
+    if(!ok)return;
+    CATS.length=0;d.forEach(c=>CATS.push(c));
+    if(!CATS.some(c=>c.id===cat))cat=CATS[0].id;
+    renderAll();
+  }catch(e){/* keep the built-in lists */}
+}
+loadRemote();
 const h=location.hash.replace("#","");
 if(LEGAL[h])openLegal(h);
 </script>
