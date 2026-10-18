@@ -23,12 +23,12 @@
 <style>
 :root{
   --bg:#F5F3FF; --surface:#FFFFFF; --ink:#1B1A34; --muted:#66658A; --line:#E0DDF7;
-  --pf:#D6249F; --ig:#D6249F; --fb:#1877F2; --yt:#E8132B;
+  --hbg:#EEE9FF; --pf:#D6249F; --ig:#D6249F; --fb:#1877F2; --yt:#E8132B;
   --shadow:0 14px 34px -14px rgba(40,30,110,.28);
   --font:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;
 }
 @media (prefers-color-scheme:dark){
-  :root{--bg:#13122A; --surface:#1E1D3E; --ink:#EEEDFF; --muted:#A3A2CB; --line:#34325F; --shadow:0 14px 34px -14px rgba(0,0,0,.65);}
+  :root{--hbg:#27254F; --bg:#13122A; --surface:#1E1D3E; --ink:#EEEDFF; --muted:#A3A2CB; --line:#34325F; --shadow:0 14px 34px -14px rgba(0,0,0,.65);}
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:20px}
@@ -38,9 +38,15 @@ ul{list-style:none}
 :focus-visible{outline:3px solid var(--pf);outline-offset:2px;border-radius:8px}
 .wrap{max-width:900px;margin:0 auto;padding:0 20px}
 
-.top{padding:14px 0 0;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
-.logo{width:40px;height:40px;border-radius:50%;display:block}
+.top{position:relative;overflow:hidden;margin-top:12px;padding:15px 18px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(135deg,var(--surface) 0%,var(--hbg) 100%);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,#D6249F,#1877F2,#E8132B)}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--ink);min-width:0;white-space:nowrap}
+.logo{width:54px;height:54px;border-radius:50%;display:block;flex:none;background:#fff;box-shadow:0 0 0 3px var(--surface),0 8px 20px -6px rgba(24,119,242,.5);transition:transform .3s}
+.brand:hover .logo{transform:rotate(-6deg) scale(1.04)}
+.bname b{display:block;font-size:1.32rem;font-weight:800;letter-spacing:-.035em;line-height:1.1}
+.bname i{font-style:normal;background:linear-gradient(90deg,#1877F2,#D6249F);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bname small{display:block;font-size:.78rem;color:var(--muted);font-weight:500;margin-top:4px}
+@media (max-width:480px){.top{padding:13px 14px 16px}.logo{width:44px;height:44px}.brand{gap:10px}.bname b{font-size:1.1rem}.bname small{font-size:.72rem}}
 
 .hero{padding:20px 0 4px}
 .hero h1{font-size:clamp(1.5rem,4.6vw,2.1rem);line-height:1.15;font-weight:700;letter-spacing:-.03em}
@@ -97,11 +103,19 @@ ul{list-style:none}
 .toast{position:fixed;left:50%;bottom:92px;transform:translate(-50%,20px);background:var(--pf);color:#fff;font-weight:700;padding:12px 20px;border-radius:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:70;max-width:92vw;text-align:center;box-shadow:0 12px 30px rgba(0,0,0,.3)}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 
-footer{margin-top:60px;border-top:1px solid var(--line);padding:30px 0 120px;color:var(--muted);font-size:.85rem}
-.flinks{display:flex;flex-wrap:wrap;gap:6px 22px;margin-bottom:16px}
-.flinks button{font-weight:600;font-size:.9rem;color:var(--ink)}
-.flinks button:hover{color:var(--pf)}
-footer p{max-width:70ch}
+footer{margin-top:44px;padding:0 0 120px}
+.fcard{position:relative;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 22px 18px;box-shadow:var(--shadow)}
+.fcard::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,#D6249F,#1877F2,#E8132B)}
+.fgrid{display:flex;justify-content:space-between;align-items:flex-start;gap:20px 30px;flex-wrap:wrap}
+.fbrand{display:flex;align-items:center;gap:12px;max-width:340px}
+.flogo{width:42px;height:42px;border-radius:50%;flex:none;box-shadow:0 0 0 3px var(--bg)}
+.fbrand b{display:block;font-size:1.02rem}
+.fbrand span{display:block;font-size:.8rem;color:var(--muted);margin-top:2px;line-height:1.4}
+.flinks{display:flex;flex-wrap:wrap;gap:8px;max-width:420px}
+.flinks button{padding:8px 15px;border-radius:999px;border:1px solid var(--line);background:var(--bg);font-weight:600;font-size:.84rem;color:var(--ink);transition:border-color .2s,color .2s,transform .2s,box-shadow .2s}
+.flinks button:hover{border-color:#1877F2;color:#1877F2;transform:translateY(-2px);box-shadow:0 8px 16px -10px rgba(24,119,242,.7)}
+.fnote{font-size:.76rem;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);margin-top:20px;padding-top:14px}
+.frow{display:flex;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;margin-top:10px;font-size:.78rem;color:var(--muted);font-weight:600}
 
 /* legal dialog */
 dialog{border:0;border-radius:22px;background:var(--surface);color:var(--ink);width:min(720px,94vw);max-height:88vh;padding:0;margin:auto;box-shadow:0 30px 80px rgba(0,0,0,.45)}
@@ -149,7 +163,12 @@ dialog::backdrop{background:rgba(10,8,30,.6);backdrop-filter:blur(3px)}
 <body>
 
 <div class="wrap">
-  <div class="top"><div class="brand"><img class="logo" src="logo.png" alt="" width="40" height="40">Trending Hashtag</div></div>
+  <header class="top">
+    <a class="brand" href="./" aria-label="Trending Hashtag home">
+      <img class="logo" src="logo.png" alt="" width="54" height="54">
+      <span class="bname"><b>Trending <i>Hashtag</i></b><small>Copy hashtags in one tap</small></span>
+    </a>
+  </header>
 
   <div class="hero">
     <h1 class="sr-only">Copy trending hashtags in 3 easy steps.</h1>
@@ -175,14 +194,23 @@ dialog::backdrop{background:rgba(10,8,30,.6);backdrop-filter:blur(3px)}
   </section>
 
   <footer>
-    <div class="flinks">
-      <button data-legal="privacy">Privacy Policy</button>
-      <button data-legal="terms">Terms of Use</button>
-      <button data-legal="disclaimer">Disclaimer</button>
-      <button data-legal="about">About</button>
-      <button data-legal="contact">Contact</button>
+    <div class="fcard">
+      <div class="fgrid">
+        <div class="fbrand">
+          <img class="flogo" src="logo.png" alt="" width="42" height="42">
+          <div><b>Trending Hashtag</b><span>Free hashtags for Instagram, Facebook and YouTube.</span></div>
+        </div>
+        <nav class="flinks" aria-label="Footer">
+          <button data-legal="privacy">Privacy Policy</button>
+          <button data-legal="terms">Terms of Use</button>
+          <button data-legal="disclaimer">Disclaimer</button>
+          <button data-legal="about">About</button>
+          <button data-legal="contact">Contact</button>
+        </nav>
+      </div>
+      <p class="fnote">Trending Hashtag is an independent website and is not affiliated with, endorsed by or sponsored by Instagram, Facebook, Meta, YouTube or Google. All names and logos belong to their respective owners.</p>
+      <div class="frow"><span>&copy; 2026 Trending Hashtag</span><span>Instagram &middot; Facebook &middot; YouTube</span></div>
     </div>
-    <p>&copy; 2026 Trending Hashtag. Trending Hashtag is an independent website and is not affiliated with, endorsed by or sponsored by Instagram, Facebook, Meta, YouTube or Google. All names and logos belong to their respective owners.</p>
   </footer>
 </div>
 
@@ -241,6 +269,7 @@ privacy:{title:"Privacy Policy",html:()=>`
 </ul>
 <h4>3. Hosting provider</h4>
 <p>The website, and the small service that delivers our hashtag lists, are hosted on Cloudflare. Like every web host, Cloudflare may automatically process technical data such as your IP address and browser type to deliver the site and protect it from attacks. We do not receive or use this data to identify you. Cloudflare handles it under its own privacy policy.</p>
+<p>Our private admin area (used only by the site owner) blocks repeated wrong password attempts. If someone enters a wrong password many times there, a one-way coded version of their connection is kept for 15 minutes to stop password guessing, and is then deleted automatically. Normal visitors never use this area and are not affected.</p>
 <h4>4. If you email us</h4>
 <p>If you choose to write to ${SITE.email}, we receive your email address and message. We use them only to reply to you and delete them when they are no longer needed. We do not share them. Our mailbox is a Gmail account, so Google also processes emails sent to it under its own privacy policy.</p>
 <h4>5. Children</h4>
@@ -248,7 +277,7 @@ privacy:{title:"Privacy Policy",html:()=>`
 <h4>6. Your rights</h4>
 <p>Under the DPDP Act, 2023 you may ask us what personal data we hold about you, ask us to correct or erase it, and make a complaint. Since the website itself collects none, this applies only to any email you sent us. You can also nominate another person to exercise these rights for you.</p>
 <h4>7. Grievance contact</h4>
-<p>For any privacy question or complaint, email <a href="mailto:${SITE.email}">${SITE.email}</a> (${SITE.name}). We will reply within a reasonable time. If you are not satisfied, you may approach the Data Protection Board of India.</p>
+<p>For any privacy question or complaint, email <a href="mailto:${SITE.email}">${SITE.email}</a> (${SITE.name}). We will reply within 7 working days. If you are not satisfied, you may approach the Data Protection Board of India.</p>
 <h4>8. Third-party links</h4>
 <p>This website does not link to other sites except where the footer names a platform. Instagram, Facebook and YouTube have their own privacy practices that we do not control.</p>
 <h4>9. Changes to this policy</h4>
@@ -273,7 +302,7 @@ terms:{title:"Terms of Use",html:()=>`
 <h4>5. No guarantees</h4>
 <p>The website is provided "as is" and "as available". We do not promise that it will always be available, error-free, or that using any hashtag will increase your views, followers or income.</p>
 <h4>6. Limitation of liability</h4>
-<p>To the fullest extent allowed by law, The owners and developers of ${SITE.name} are not liable for any loss or damage arising from your use of, or inability to use, the website, including loss of reach, account restrictions or business loss.</p>
+<p>To the fullest extent allowed by law, the owners and developers of ${SITE.name} are not liable for any loss or damage arising from your use of, or inability to use, the website, including loss of reach, account restrictions or business loss.</p>
 <h4>7. Changes and termination</h4>
 <p>We may change, suspend or stop any part of the website, and update these terms, at any time. Continued use after changes means you accept them.</p>
 <h4>8. Governing law</h4>
