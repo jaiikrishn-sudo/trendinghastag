@@ -16,4 +16,4 @@ Copy a whole `{id:"...",name:"...",groups:[ ... ]},` block in `hashtags.js`, cha
 
 ## Other changes
 - Contact email, site name, policy date: in `index.html`, in the `SITE` block near the top.
-- Domain: replace `YOUR-DOMAIN.com` in `index.html`, `robots.txt` and `sitemap.xml`.
+- Domain: set to trendinghastag.com. If it ever changes, update `index.html`, `robots.txt` and `sitemap.xml`.

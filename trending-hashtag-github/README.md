@@ -7,11 +7,8 @@ Free hashtags for Instagram, Facebook and YouTube. A single static page: no back
 2. Cloudflare Dashboard > Workers & Pages > Create > Pages > Connect to Git.
 3. Pick the repo. Leave build command and output directory empty. Save and Deploy.
 
-## Before going live
-Replace `YOUR-DOMAIN.com` with the real domain in:
-- `index.html` (canonical, og:url, og:image, twitter:image)
-- `robots.txt`
-- `sitemap.xml`
+## Domain
+The site address is set to https://trendinghastag.com in `index.html`, `robots.txt` and `sitemap.xml`. If the main domain ever changes, update those three files.
 
 ## Keep the site data-free
 Do not add analytics, ads, fonts from other sites or embeds without first updating the Privacy Policy inside `index.html`.
