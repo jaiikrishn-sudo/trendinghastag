@@ -38,15 +38,9 @@ ul{list-style:none}
 :focus-visible{outline:3px solid var(--pf);outline-offset:2px;border-radius:8px}
 .wrap{max-width:900px;margin:0 auto;padding:0 20px}
 
-.top{position:relative;overflow:hidden;margin-top:12px;padding:15px 18px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(135deg,var(--surface) 0%,var(--hbg) 100%);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
-.top::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,#D6249F,#1877F2,#E8132B)}
-.brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--ink);min-width:0;white-space:nowrap}
-.logo{width:54px;height:54px;border-radius:50%;display:block;flex:none;background:#fff;box-shadow:0 0 0 3px var(--surface),0 8px 20px -6px rgba(24,119,242,.5);transition:transform .3s}
-.brand:hover .logo{transform:rotate(-6deg) scale(1.04)}
-.bname b{display:block;font-size:1.32rem;font-weight:800;letter-spacing:-.035em;line-height:1.1}
-.bname i{font-style:normal;background:linear-gradient(90deg,#1877F2,#D6249F);-webkit-background-clip:text;background-clip:text;color:transparent}
-.bname small{display:block;font-size:.78rem;color:var(--muted);font-weight:500;margin-top:4px}
-@media (max-width:480px){.top{padding:13px 14px 16px}.logo{width:44px;height:44px}.brand{gap:10px}.bname b{font-size:1.1rem}.bname small{font-size:.72rem}}
+.top{margin-top:12px;padding:12px 18px;display:flex;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.top a{display:block;width:100%;max-width:520px}
+.banner{display:block;width:100%;height:auto}
 
 .hero{padding:20px 0 4px}
 .hero h1{font-size:clamp(1.5rem,4.6vw,2.1rem);line-height:1.15;font-weight:700;letter-spacing:-.03em}
@@ -128,6 +122,8 @@ dialog::backdrop{background:rgba(10,8,30,.6);backdrop-filter:blur(3px)}
 .dnav button[aria-pressed="true"]{background:var(--pf);color:#fff;border-color:var(--pf)}
 .dbody{padding:10px 22px 28px;overflow:auto;max-height:calc(88vh - 140px)}
 .dbody h4{margin:22px 0 6px;font-size:1.02rem}
+.dlogo{display:flex;justify-content:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 16px;margin:14px 0 4px}
+.dlogo img{display:block;width:100%;max-width:260px;height:auto}
 .dbody p,.dbody li{color:var(--muted);font-size:.94rem;margin-bottom:8px}
 .dbody ul{padding-left:20px;list-style:disc}
 .dbody .upd{font-size:.82rem;margin-top:14px}
@@ -164,9 +160,11 @@ dialog::backdrop{background:rgba(10,8,30,.6);backdrop-filter:blur(3px)}
 
 <div class="wrap">
   <header class="top">
-    <a class="brand" href="./" aria-label="Trending Hashtag home">
-      <img class="logo" src="logo.png" alt="" width="54" height="54">
-      <span class="bname"><b>Trending <i>Hashtag</i></b><small>Copy hashtags in one tap</small></span>
+    <a href="./" aria-label="Trendinghastag.com home">
+      <picture>
+        <source srcset="banner.webp" type="image/webp">
+        <img class="banner" src="banner.png" alt="Trendinghastag.com - Discover, Track, Explore" width="1000" height="246">
+      </picture>
     </a>
   </header>
 
@@ -421,10 +419,11 @@ async function copyText(text,msg){
 
 /* ============ LEGAL DIALOG ============ */
 const dlg=$("#legal");
+const LOGO_HTML='<div class="dlogo"><picture><source srcset="banner.webp" type="image/webp"><img src="banner.png" alt="Trendinghastag.com" width="1000" height="246"></picture></div>';
 function openLegal(key){
   const L=LEGAL[key];if(!L)return;
   $("#legalTitle").textContent=L.title;
-  $("#legalBody").innerHTML=L.html();
+  $("#legalBody").innerHTML=LOGO_HTML+L.html();
   $("#legalBody").scrollTop=0;
   $("#legalNav").innerHTML=Object.entries(LEGAL).map(([k,v])=>
     `<button data-legal="${k}" aria-pressed="${k===key}">${v.title}</button>`).join("");
